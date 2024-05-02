@@ -1,3 +1,48 @@
+body {
+    background-color: rgb(57, 122, 114); 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 2px;
+    font-size: 1.2em;
+}
+
+#container_login {
+    width: 90%;
+    max-width: 400px;
+    margin: 20vh auto 0 auto;
+    text-align: center;     
+    color: white;
+}
+
+#container_login input {
+    width: 90%;
+    height: 24px;
+    border-radius: 2px;
+}
+
+#container_register {
+    width: 90%;
+    max-width: 400px;
+    margin: 20vh auto 0 auto;
+    text-align: left;
+    color: white;
+}
+
+#container_register input {
+    width: 90%;
+    height: 24px;
+    border-radius: 2px;
+}
+
 .active {
     text-decoration: underline;
+}
+button {
+    padding: 4px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px black;
+}
+
+a {
+    color: white;
 }

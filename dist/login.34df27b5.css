@@ -1,0 +1,50 @@
+body {
+  letter-spacing: 2px;
+  background-color: #397a72;
+  font-family: Georgia, Times New Roman, Times, serif;
+  font-size: 1.2em;
+}
+
+#container_login {
+  text-align: center;
+  color: #fff;
+  width: 90%;
+  max-width: 400px;
+  margin: 20vh auto 0;
+}
+
+#container_login input {
+  border-radius: 2px;
+  width: 90%;
+  height: 24px;
+}
+
+#container_register {
+  text-align: left;
+  color: #fff;
+  width: 90%;
+  max-width: 400px;
+  margin: 20vh auto 0;
+}
+
+#container_register input {
+  border-radius: 2px;
+  width: 90%;
+  height: 24px;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+button {
+  border-radius: 5px;
+  padding: 4px 20px;
+  font-size: 18px;
+  box-shadow: 3px 3px 8px #000;
+}
+
+a {
+  color: #fff;
+}
+/*# sourceMappingURL=login.34df27b5.css.map */
