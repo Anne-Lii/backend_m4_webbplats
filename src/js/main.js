@@ -1,8 +1,20 @@
 //code written by Anne-Lii Hansen VT 2024
 "use strict"
 
-//load all content first
-document.addEventListener("DOMContentLoaded", () => {
+// Run authentication check when page loads
+document.addEventListener("DOMContentLoaded", () => {  
+
+    function checkAuthentication() {
+        // Only redirect if the current page is mypages.html
+        if (window.location.pathname === "/api/mypages.html") {
+            const localStorageToken = localStorage.getItem("token");
+            if (!localStorageToken) {
+                window.location.href = "index.html";
+            }
+        }
+    }
+
+    checkAuthentication();
 
     const url = "https://backend-m4-api.onrender.com/api";
     const registerForm = document.getElementById("registerForm");//get form for register
@@ -99,13 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // check if user is authenticated
                     const localtoken = localStorage.getItem("token");
-                    if (!localtoken) {
+                    if (localtoken == null) {
 
-                        //unvalid JTW message
-                        loginMessage.textContent = "Ogiltig JWT";
+                        //unvalid JTW message redirect to login
+                        window.location.href = "index.html";
+
 
                     } else {
-                        // Redirect user to startpage
+                        // Redirect user to mypages protected route
                         window.location.replace("mypages.html");
                     }
 
