@@ -590,6 +590,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 document.addEventListener("DOMContentLoaded", ()=>{
     const url = "https://backend-m4-api.onrender.com/api";
     const registerForm = document.getElementById("registerForm"); //get form for register
+    const registerMessage = document.getElementById("registerMessage");
     if (registerForm) registerForm.addEventListener("submit", async function(event) {
         event.preventDefault(); //prevent standard form behavior
         //read in value from input
@@ -610,15 +611,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 })
             });
             if (response.ok) {
-                alert("Anv\xe4ndare registrerad!");
+                registerMessage.textContent = "Anv\xe4ndare registrerad!";
                 resetForm(); //reset form
             } else {
                 const errorMessage = await response.json();
-                alert(errorMessage.error);
+                registerMessage.textContent = errorMessage.error;
             }
         } catch (error) {
             console.error("Registreringsfel:", error);
-            alert("Ett fel intr\xe4ffade vid registreringen. F\xf6rs\xf6k igen senare.");
+            registerMessage.textContent = "Ett fel intr\xe4ffade vid registreringen. F\xf6rs\xf6k igen senare.";
         }
     });
     function resetForm() {
@@ -631,6 +632,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     //event submit loginForm
     if (loginForm) loginForm.addEventListener("submit", async function(event) {
         event.preventDefault(); //prevent standard form behavior
+        document.getElementById("loadingMessage").innerText = "Loading"; //Text "Loading" shows while awaiting fetch
         // Get username and password from inlogForm
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
@@ -646,6 +648,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     password: password
                 })
             });
+            document.getElementById("loadingMessage").innerText = "Loading.";
+            setTimeout(()=>{
+                document.getElementById("loadingMessage").innerText = "Loading..";
+            }, 500);
+            setTimeout(()=>{
+                document.getElementById("loadingMessage").innerText = "Loading...";
+            }, 1000);
             // Check if inlog was succesful
             if (response.ok) {
                 const data = await response.json();
@@ -654,8 +663,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 localStorage.setItem("token", token);
                 //clear messages
                 loginMessage.innerHTML = "";
-                //message login succesful
-                loginMessage.textContent = "Inloggningen lyckades!";
                 // check if user is authenticated
                 const localtoken = localStorage.getItem("token");
                 if (!localtoken) //unvalid JTW message
@@ -664,7 +671,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 window.location.replace("mypages.html");
             } else {
                 const errorMessage = await response.json();
-                loginMessage.textContent = errorMessage.error;
+                loginMessage.textContent = "errorMessage.error";
             }
         } catch (error) {
             console.error("Inloggningsfel:", error);

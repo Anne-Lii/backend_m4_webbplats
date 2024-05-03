@@ -6,19 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const url = "https://backend-m4-api.onrender.com/api";
     const registerForm = document.getElementById("registerForm");//get form for register
+    const registerMessage = document.getElementById("registerMessage");
 
-    if(registerForm) {
+    if (registerForm) {
         registerForm.addEventListener("submit", async function (event) {
             event.preventDefault();//prevent standard form behavior
-    
+
             //read in value from input
             const username = document.getElementById("usernameReg").value;
             const password = document.getElementById("passwordReg").value;
             const email = document.getElementById("emailReg").value;
-    
+
             //fetch API
             try {
-                
+
                 const response = await fetch(url + "/register", {
                     method: "POST",
                     headers: {
@@ -31,15 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     })
                 });
                 if (response.ok) {
-                    alert("Användare registrerad!");
+                    registerMessage.textContent = "Användare registrerad!";
                     resetForm();//reset form
                 } else {
                     const errorMessage = await response.json();
-                    alert(errorMessage.error);
+                    registerMessage.textContent = errorMessage.error;
                 }
             } catch (error) {
                 console.error('Registreringsfel:', error);
-                alert('Ett fel inträffade vid registreringen. Försök igen senare.');
+                registerMessage.textContent = "Ett fel inträffade vid registreringen. Försök igen senare.";
             }
         });
     }
@@ -54,14 +55,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginMessage = document.getElementById("loginMessage");
 
     //event submit loginForm
-    if(loginForm) {
+    if (loginForm) {
         loginForm.addEventListener("submit", async function (event) {
             event.preventDefault();//prevent standard form behavior
-    
+
+            document.getElementById("loadingMessage").innerText = "Loading";//Text "Loading" shows while awaiting fetch
+
             // Get username and password from inlogForm
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-    
+
             try {
                 //send inlog to API
                 const response = await fetch(url + "/login", {
@@ -74,39 +77,43 @@ document.addEventListener("DOMContentLoaded", () => {
                         password: password
                     })
                 });
-    
+
+                document.getElementById("loadingMessage").innerText = "Loading.";
+                setTimeout(() => {
+                    document.getElementById("loadingMessage").innerText = "Loading..";
+                }, 500);
+                setTimeout(() => {
+                    document.getElementById("loadingMessage").innerText = "Loading...";
+                }, 1000);
+
                 // Check if inlog was succesful
                 if (response.ok) {
                     const data = await response.json();
                     const token = data.response.token;
-    
+
                     // save token in localStorage
                     localStorage.setItem("token", token);
 
                     //clear messages
                     loginMessage.innerHTML = "";
-                    //message login succesful
-                    loginMessage.textContent = "Inloggningen lyckades!";
 
                     // check if user is authenticated
                     const localtoken = localStorage.getItem("token");
                     if (!localtoken) {
-                
-                    //unvalid JTW message
-                    loginMessage.textContent = "Ogiltig JWT";
-                    
-                    } else {  
-                         // Redirect user to startpage
-                         window.location.replace("mypages.html");
+
+                        //unvalid JTW message
+                        loginMessage.textContent = "Ogiltig JWT";
+
+                    } else {
+                        // Redirect user to startpage
+                        window.location.replace("mypages.html");
                     }
 
-                 
                 } else {
-                    
                     const errorMessage = await response.json();
-                    loginMessage.textContent = errorMessage.error;
+                    loginMessage.textContent = "errorMessage.error";
                 }
-                
+
             } catch (error) {
                 console.error('Inloggningsfel:', error);
                 loginMessage.textContent = 'Ett fel inträffade vid inloggningen. Försök igen senare.';
@@ -120,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutBtn.addEventListener("click", () => {
             // Rensa token från localStorage
             localStorage.removeItem("token");
-            
+
             // Omdirigera användaren tillbaka till inloggningssidan
             window.location.href = "login.html";
         });

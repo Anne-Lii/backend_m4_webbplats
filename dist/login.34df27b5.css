@@ -18,15 +18,24 @@ body {
   margin: 20vh auto 0;
 }
 
+#container_login h1 {
+  padding-bottom: 20px;
+}
+
 #container_login input {
   border-radius: 2px;
   width: 90%;
-  height: 24px;
+  height: 30px;
+  padding-left: 10px;
 }
 
 #loginMessage {
   color: #f1c7b9;
   padding-bottom: 20px;
+}
+
+#loadingMessage {
+  padding-bottom: 10px;
 }
 
 #container_register {
@@ -37,10 +46,15 @@ body {
   margin: 20vh auto 0;
 }
 
+#container_register h1 {
+  padding-bottom: 20px;
+}
+
 #container_register input {
   border-radius: 2px;
   width: 90%;
-  height: 24px;
+  height: 30px;
+  padding-left: 10px;
 }
 
 #body_mypages {

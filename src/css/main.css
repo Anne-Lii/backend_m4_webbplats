@@ -18,15 +18,24 @@ body {
     color: white;
 }
 
+#container_login h1 {
+    padding-bottom: 20px;
+}
+
 #container_login input {
     width: 90%;
-    height: 24px;
+    height: 30px;
     border-radius: 2px;
+    padding-left: 10px;
 }
 
 #loginMessage {
     color: rgb(241, 199, 185);
     padding-bottom: 20px;
+}
+
+#loadingMessage {
+    padding-bottom: 10px;
 }
 
 #container_register {
@@ -37,17 +46,22 @@ body {
     color: white;
 }
 
+#container_register h1 {
+    padding-bottom: 20px;
+}
+
 #container_register input {
     width: 90%;
-    height: 24px;
+    height: 30px;
     border-radius: 2px;
+    padding-left: 10px;
 }
 
 #body_mypages {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-image: url('/src/images/background.jpg');
+    background-image: url('/src/images/background.jpg'); /* Photo by <a href="https://unsplash.com/@modernafflatusphotography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ash from Modern Afflatus</a> on <a href="https://unsplash.com/photos/green-leafed-plant-NQ6Lh81BTRs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
