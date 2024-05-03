@@ -671,7 +671,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 window.location.replace("mypages.html");
             } else {
                 const errorMessage = await response.json();
-                loginMessage.textContent = "errorMessage.error";
+                loginMessage.textContent = errorMessage.error;
             }
         } catch (error) {
             console.error("Inloggningsfel:", error);
@@ -683,10 +683,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         // Rensa token från localStorage
         localStorage.removeItem("token");
         // Omdirigera användaren tillbaka till inloggningssidan
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     });
 });
 
 },{}]},["j2YDk","1SICI"], "1SICI", "parcelRequire4d85")
 
-//# sourceMappingURL=login.18dbc454.js.map
+//# sourceMappingURL=index.18dbc454.js.map
