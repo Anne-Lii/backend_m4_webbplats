@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 } else {
                     const errorMessage = await response.json();
-                    loginMessage.textContent = "errorMessage.error";
+                    loginMessage.textContent = errorMessage.error;
                 }
 
             } catch (error) {
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.removeItem("token");
 
             // Omdirigera användaren tillbaka till inloggningssidan
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         });
     }
 });

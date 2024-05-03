@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" type="module"></script>
-    <title>Startsida</title>
+    <title>Inloggning</title>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Startsida</a></li>
-                <li><a href="mypages.html">Mina Sidor</a></li>               
-            </ul>
-        </nav>
-    </header>
-   <main id="main_index">
-    <h1>Startsidan</h1>
-   </main>
+<body>  
+  <main id="main_login">
+    <div id="container_login">
+        <h1>Inloggning</h1>
+        <form id="loginForm">
+            <label for="username">Användarnamn: </label><br>
+            <input type="text" id="username" name="username">
+            <br><br>
+            <label for="password">Lösenord: </label><br>
+            <input type="password" id="password" name="password">
+            <br><br>
+            <div id="loginMessage"></div>
+            <div id="loadingMessage"></div>
+            <button type="submit">Logga in</button>
+        </form>
+        <br>
+    <a href="register.html">Registrera dig</a>
+   
+    </div>
+  </main>
 </body>
 </html>

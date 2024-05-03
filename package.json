@@ -2,7 +2,7 @@
   "name": "m4_webbplats",
   "version": "1.0.0",
   "description": "",
-  "source": "src/login.html",
+  "source": "src/index.html",
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
