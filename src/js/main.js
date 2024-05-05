@@ -2,19 +2,7 @@
 "use strict"
 
 // Run authentication check when page loads
-document.addEventListener("DOMContentLoaded", () => {  
-
-    function checkAuthentication() {
-        // Only redirect if the current page is mypages.html
-        if (window.location.pathname === "/api/mypages.html") {
-            const localStorageToken = localStorage.getItem("token");
-            if (!localStorageToken) {
-                window.location.href = "index.html";
-            }
-        }
-    }
-
-    checkAuthentication();
+document.addEventListener("DOMContentLoaded", () => {   
 
     const url = "https://backend-m4-api.onrender.com/api";
     const registerForm = document.getElementById("registerForm");//get form for register
@@ -73,6 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.getElementById("loadingMessage").innerText = "Loading";//Text "Loading" shows while awaiting fetch
 
+            document.getElementById("loadingMessage").innerText = "Loading.";
+            setTimeout(() => {
+                document.getElementById("loadingMessage").innerText = "Loading..";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("loadingMessage").innerText = "Loading...";
+            }, 1000);
+
+            
             // Get username and password from inlogForm
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
@@ -90,36 +87,31 @@ document.addEventListener("DOMContentLoaded", () => {
                     })
                 });
 
-                document.getElementById("loadingMessage").innerText = "Loading.";
-                setTimeout(() => {
-                    document.getElementById("loadingMessage").innerText = "Loading..";
-                }, 500);
-                setTimeout(() => {
-                    document.getElementById("loadingMessage").innerText = "Loading...";
-                }, 1000);
+               
 
                 // Check if inlog was succesful
                 if (response.ok) {
                     const data = await response.json();
                     const token = data.response.token;
 
+                   
+
                     // save token in localStorage
                     localStorage.setItem("token", token);
-
+                    console.log("hej");
                     //clear messages
                     loginMessage.innerHTML = "";
 
                     // check if user is authenticated
                     const localtoken = localStorage.getItem("token");
-                    if (localtoken == null) {
+                    if (!localtoken) {
 
                         //unvalid JTW message redirect to login
                         window.location.href = "index.html";
 
-
                     } else {
                         // Redirect user to mypages protected route
-                        window.location.replace("mypages.html");
+                        window.location.href = "mypages.html";
                     }
 
                 } else {
