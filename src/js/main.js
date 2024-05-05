@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("loadingMessage").innerText = "Loading...";
             }, 1000);
 
-            
+
             // Get username and password from inlogForm
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // save token in localStorage
                     localStorage.setItem("token", token);
-                    console.log("hej");
+                    
                     //clear messages
                     loginMessage.innerHTML = "";
 
