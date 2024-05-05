@@ -59,25 +59,26 @@ body {
 
 #body_mypages {
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    background-image: url('/src/images/background.jpg'); /* Photo by <a href="https://unsplash.com/@modernafflatusphotography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ash from Modern Afflatus</a> on <a href="https://unsplash.com/photos/green-leafed-plant-NQ6Lh81BTRs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>*/
+    background-image: url('/src/images/background2.jpg');
+    /* Photo by <a href="https://unsplash.com/@modernafflatusphotography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ash from Modern Afflatus</a> on <a href="https://unsplash.com/photos/green-leafed-plant-NQ6Lh81BTRs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100%;  
 }
 
 #body_mypages h1 {
     color: white;
-   padding: 20px 0;
+    padding: 20px 0;
 }
 
 #main_mypages {
     width: 100%;
     height: 60vh;
-    color: white;    
+    color: white;
 }
 
 #container_mypages {
@@ -92,7 +93,7 @@ body {
 }
 
 #logoutBtn {
-  margin-top: 50px;  
+    margin-top: 50px;
 }
 
 .active {
@@ -108,4 +109,22 @@ button {
 
 a {
     color: white;
+}
+
+/* screen smaller then 500px */
+@media screen and (max-width: 500px) {
+
+    #container_mypages {
+        width: 90%;
+        padding: 10px;
+        margin: 150px auto auto auto;
+        text-align: center;
+        background-color: rgb(114, 165, 33);
+        border-radius: 50%;
+    }
+
+    #container_mypages h1 {
+        padding-top: 60px;
+
+    }
 }
