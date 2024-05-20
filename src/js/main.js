@@ -98,6 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // save token in localStorage
                     localStorage.setItem("token", token);
+
+                    //save username in localstorage
+                    localStorage.setItem("username", username);
                     
                     //clear messages
                     loginMessage.innerHTML = "";
