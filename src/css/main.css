@@ -38,6 +38,11 @@ body {
     padding-bottom: 10px;
 }
 
+/* hide link to protected side, need it for build */
+#mypagehidelink {
+    display: none;
+}
+
 #container_register {
     width: 90%;
     max-width: 400px;
